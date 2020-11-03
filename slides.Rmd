@@ -1,0 +1,35 @@
+---
+title: "Slides"
+author: "Mrinalini"
+date: "11/4/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What was asked
+
+This project required me to create a presentation with the help of R Markdown where the final output would have a plot made using plotly. Please use arrow keys to go to next/previous slide
+
+## Harry Potter
+In this project I am creating a plot that shows the different books in the Harry Potter Series and the number of pages in each one of them. Please use arrow keys to go to next/previous slide
+
+```{r include=FALSE}
+library(plotly)
+```
+```{r}
+x<- c("Philosopher's Stone","Chamber of Secrets","Prisoner of Azkaban","Goblet of Fire","Order of Phoenix","Half Blood Prince","Deathly Hallows")
+books<-factor(x,levels=c("Philosopher's Stone","Chamber of Secrets","Prisoner of Azkaban","Goblet of Fire","Order of Phoenix","Half Blood Prince","Deathly Hallows"))
+pgs<-c(223,251,317,636,766,652,607)
+hp<-data.frame(books,pgs)
+```
+## Bar Graph using Plotly
+```{r warning=FALSE}
+plot_ly(data = hp, x = ~books, y = ~pgs,type = "bar") %>%
+  layout(title = "Harry Potter Book Names and their Page Numbers",
+         xaxis=list(title="Book Name"),
+         yaxis=list(title="Page Numbers"))
+```
+
